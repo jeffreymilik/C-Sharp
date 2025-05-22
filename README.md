@@ -1,2 +1,2 @@
 # C-Sharp
-C-Sharp code I’ve written
+C# code I’ve written
