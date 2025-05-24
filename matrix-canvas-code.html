@@ -1,0 +1,163 @@
+<html>
+
+<!-- Matrix Canvas Code by Jeffrey Milik -->
+<!-- Based on the code rain sceen in the movie "The Matrix" -->
+<!-- C# code within html for display purposes -->
+
+<head>
+<title>The Matrix Code</title>
+
+<style>
+body {font-family: Verdana, Arial, sans-serif, Helvetica}
+body {font-size: 18px}
+</style>
+
+</head>
+
+<center>
+
+<h2>The Matrix Code</h2>
+<b>Select a color:</b>
+<br><br>
+<input type="button" value="Green" onClick="selectGreen()">
+<input type="button" value="Blue" onClick="selectBlue()">
+<input type="button" value="Red" onClick="selectRed()">
+<input type="button" value="Yellow" onClick="selectYellow()">
+<br><br>
+
+<canvas id="gc" width="720" height="480"></canvas>
+<script>
+
+selectcolor='green';
+codeLine=18;            // where the x coordinate starts, based on font size.
+bd=18;
+
+window.onload=function()
+{
+    c=document.getElementById('gc');
+    cc=c.getContext('2d');
+    setInterval(update,1000/30);
+    
+    randomCodeColumn1=Math.floor(Math.random() * c.width);
+    randomCodeColumn2=Math.floor(Math.random() * c.width);
+    randomCodeColumn3=Math.floor(Math.random() * c.width);
+    randomCodeColumn4=Math.floor(Math.random() * c.width);
+    randomCodeColumn5=Math.floor(Math.random() * c.width);
+    randomCodeColumn6=Math.floor(Math.random() * c.width);
+    randomCodeColumn7=Math.floor(Math.random() * c.width);
+
+    changeCharacter();
+
+    cc.fillStyle='black';
+    cc.fillRect(0,0,c.width,c.height);
+    
+}
+function selectGreen()
+{
+    selectcolor='green';    
+}
+function selectBlue()
+{
+    selectcolor='blue';    
+}
+function selectRed()
+{
+    selectcolor='red';    
+}
+function selectYellow()
+{
+    selectcolor='yellow';    
+}
+function update()
+{
+    cc.fillStyle=selectcolor;
+    cc.font="18px Verdana";
+
+    changeCharacter();
+    cc.fillText(randomCodeSymbol,randomCodeColumn1,codeLine);
+    changeCharacter();
+    cc.fillText(randomCodeSymbol,randomCodeColumn2,codeLine);
+    changeCharacter();
+    cc.fillText(randomCodeSymbol,randomCodeColumn3,codeLine);
+    changeCharacter();
+    cc.fillText(randomCodeSymbol,randomCodeColumn4,codeLine);
+    changeCharacter();
+    cc.fillText(randomCodeSymbol,randomCodeColumn5,codeLine);
+    cc.fillStyle='black';
+    cc.fillRect(randomCodeColumn6,codeLine,bd,bd);
+    cc.fillRect(randomCodeColumn7,codeLine,bd,bd);
+    cc.fillStyle=selectcolor;
+    codeLine=codeLine+18;
+    
+    if (codeLine>c.height)
+    {
+        codeLine=0;
+        randomCodeColumn1=Math.floor(Math.random() * c.width);
+        randomCodeColumn2=Math.floor(Math.random() * c.width);
+        randomCodeColumn3=Math.floor(Math.random() * c.width);
+        randomCodeColumn4=Math.floor(Math.random() * c.width);
+        randomCodeColumn5=Math.floor(Math.random() * c.width);
+        randomCodeColumn6=Math.floor(Math.random() * c.width);
+        randomCodeColumn7=Math.floor(Math.random() * c.width);
+        changeCharacter();
+    }
+}
+function changeCharacter()
+{
+    randomCodeNumber=Math.floor(Math.random() * 20);
+
+    if(randomCodeNumber==10)
+    {
+        randomCodeSymbol = "[";
+    }
+    if(randomCodeNumber==11)
+    {
+        randomCodeSymbol=">";
+    }
+    if(randomCodeNumber==12)
+    {
+        randomCodeSymbol="=";
+    }
+    if(randomCodeNumber==13)
+    {
+        randomCodeSymbol=":";
+    }
+    if(randomCodeNumber==14)
+    {
+        randomCodeSymbol="*";
+    }
+    if(randomCodeNumber==15)
+    {
+        randomCodeSymbol="Z";
+    }
+    if(randomCodeNumber==16)
+    {
+        randomCodeSymbol="\u03BC";  // the symbol for mu
+    }
+    if(randomCodeNumber==17)
+    {
+        randomCodeSymbol="\u03C0";  // the symbol for pi
+    }
+    if(randomCodeNumber==18)
+    {
+        randomCodeSymbol="\u0394";  // the symbol for capital delta
+    }
+    if(randomCodeNumber==19)
+    {
+        randomCodeSymbol="\u03B1";  // the symbol for alpha
+    }
+    if(randomCodeNumber<10)
+    {
+        randomCodeSymbol = randomCodeNumber;
+    }
+}
+
+</script>
+
+<br><br>
+&#169; Copyright 2017 Jeffrey S. Milik<br>
+<br>
+
+</center>
+ 
+</html>
